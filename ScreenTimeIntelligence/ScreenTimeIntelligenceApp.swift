@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 @main
 struct ScreenTimeIntelligenceApp: App {
+    @StateObject private var authManager = AuthorizationManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authManager)
+                .task {
+                    await authManager.requestAuthorization()
+                }
         }
     }
 }
