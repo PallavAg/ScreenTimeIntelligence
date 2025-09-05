@@ -37,6 +37,7 @@ class UnblockAIManager: ObservableObject {
             - For emergencies or important tasks: Allow 30-60 minutes  
             - For boredom or procrastination: Suggest 0-5 minutes or alternatives
             - For specific time-bound tasks: Match the time needed (max 60)
+            - For sleep related tasks: Return 0 since they should go to sleep
             
             Always encourage mindful usage and suggest taking breaks.
             Keep responses brief (1-2 sentences) and supportive.

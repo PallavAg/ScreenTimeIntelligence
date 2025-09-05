@@ -23,6 +23,14 @@ class AppBlockingManager: ObservableObject {
     @Published var unblockEndTime: Date?
     
     func startBlocking() {
+        // If we're temporarily unblocked, cancel the timer first
+        if temporarilyUnblocked {
+            unblockTimer?.invalidate()
+            unblockTimer = nil
+            temporarilyUnblocked = false
+            unblockEndTime = nil
+        }
+        
         let applications = activitySelection.applicationTokens
         let categories = activitySelection.categoryTokens
         let webDomains = activitySelection.webDomainTokens
